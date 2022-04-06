@@ -2,13 +2,41 @@ package com.afundacionfp.apprec;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class NewOrderActivity extends AppCompatActivity {
+
+    private EditText edit1,edit2,edit3,edit4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_order);
+
+        //asignación de los EditText
+        edit1 =(EditText) findViewById(R.id.editTextTextPersonName);
+        edit2 =(EditText) findViewById(R.id.editTextPhone);
+        edit3 =(EditText) findViewById(R.id.editTextTextPersonName2);
+        edit4 =(EditText) findViewById(R.id.editTextNumber);
+    }
+    public void onClickVolver (View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void onClickEnv (View view){
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        CharSequence text ="Empresa "+ edit1.getText().toString()+ " Telefonoo: "+edit2.getText().toString()+" Pedido: "+ edit3.getText().toString()+
+                " Cantidad "+ edit4.getText().toString();
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
