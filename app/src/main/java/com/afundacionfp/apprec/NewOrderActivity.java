@@ -9,6 +9,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class NewOrderActivity extends AppCompatActivity {
 
     private EditText edit1,edit2,edit3,edit4;
@@ -39,4 +50,21 @@ public class NewOrderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void onClickAcept(View view) throws UnsupportedEncodingException {
+        Mirequest post = new Mirequest(Request.Method.POST, "https://625e5cdf873d6798e2a5dce7.mockapi.io/api/vf1/Pedido", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.print("Funciona");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.print("No funciona");
+            }
+        });
+        RequestQueue cola = Volley.newRequestQueue(this);
+        cola.add(post);
+    }
+
+
 }
