@@ -23,6 +23,10 @@ import java.net.URLEncoder;
 public class NewOrderActivity extends AppCompatActivity {
 
     private EditText edit1,edit2,edit3,edit4;
+    String nombre;
+    String telefono;
+    String pedido;
+    String numeroPedidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class NewOrderActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onClickAcept(View view) throws UnsupportedEncodingException {
+        nombre=edit1.getText().toString();
         Mirequest post = new Mirequest(Request.Method.POST, "https://625e5cdf873d6798e2a5dce7.mockapi.io/api/vf1/Pedido", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

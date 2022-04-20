@@ -9,8 +9,17 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.Map;
 
 public class Mirequest extends StringRequest {
+
+    String nombre;
+    String telefono;
+    String pedido;
+    String numeroPedidos;
+
+
+
     public Mirequest(int method, String url, Response.Listener<String> listener, @Nullable Response.ErrorListener errorListener) {
         super(method, url, listener, errorListener);
+        nombre=
     }
 
     @Override
@@ -20,8 +29,9 @@ public class Mirequest extends StringRequest {
 
     @Override
     public byte[] getBody() throws AuthFailureError {
-        String cuerpoPeticion="nombre=PruebaToast&telefono=000000003&producto=ToastM&numeroPalets=1";
+        String cuerpoPeticion="nombre=Prueba&telefono=000000005&producto=Simple&numeroPalets=1";
         byte[] b = cuerpoPeticion.getBytes();
         return b;
     }
 }
+//
