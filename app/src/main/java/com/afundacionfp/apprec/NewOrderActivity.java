@@ -39,27 +39,26 @@ public class NewOrderActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void onClickEnv (View view){
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        CharSequence text ="Empresa "+ edit1.getText().toString()+ " Telefonoo: "+edit2.getText().toString()+" Pedido: "+ edit3.getText().toString()+
-                " Cantidad "+ edit4.getText().toString();
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
     public void onClickAcept(View view) throws UnsupportedEncodingException {
         Mirequest post = new Mirequest(Request.Method.POST, "https://625e5cdf873d6798e2a5dce7.mockapi.io/api/vf1/Pedido", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 System.out.print("Funciona");
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                CharSequence text ="Enviado";
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.print("No funciona");
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                CharSequence text ="Fallo al enviarlo";
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
         RequestQueue cola = Volley.newRequestQueue(this);

@@ -20,7 +20,7 @@ public class Mirequest extends StringRequest {
 
     @Override
     public byte[] getBody() throws AuthFailureError {
-        String cuerpoPeticion="nombre=a&Telefono=6&producto=p&numeroPalets=2";
+        String cuerpoPeticion="nombre=PruebaToast&telefono=000000003&producto=ToastM&numeroPalets=1";
         byte[] b = cuerpoPeticion.getBytes();
         return b;
     }
