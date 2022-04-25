@@ -10,16 +10,17 @@ import java.util.Map;
 
 public class Mirequest extends StringRequest {
 
-    String nombre;
-    String telefono;
-    String pedido;
-    String numeroPedidos;
+    String nombre,telefono,pedido,numeroPedidos;
 
+    String dato1,dato2,dato3,dato4;
 
-
-    public Mirequest(int method, String url, Response.Listener<String> listener, @Nullable Response.ErrorListener errorListener) {
+    public Mirequest(int method, String url, Response.Listener<String> listener, @Nullable Response.ErrorListener errorListener,
+                     String nombre, String telefono, String pedido, String numeroPedidos) {
         super(method, url, listener, errorListener);
-        nombre=
+        this.nombre=nombre;
+        this.telefono=telefono;
+        this.pedido=pedido;
+        this.numeroPedidos=numeroPedidos;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class Mirequest extends StringRequest {
 
     @Override
     public byte[] getBody() throws AuthFailureError {
-        String cuerpoPeticion="nombre=Prueba&telefono=000000005&producto=Simple&numeroPalets=1";
+        String cuerpoPeticion=String.format("nombre=%s&telefono=%s&producto=%s&numeroPalets=%s",nombre,telefono,pedido,numeroPedidos);
         byte[] b = cuerpoPeticion.getBytes();
         return b;
     }

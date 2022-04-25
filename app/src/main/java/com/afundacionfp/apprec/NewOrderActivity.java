@@ -45,6 +45,9 @@ public class NewOrderActivity extends AppCompatActivity {
     }
     public void onClickAcept(View view) throws UnsupportedEncodingException {
         nombre=edit1.getText().toString();
+        telefono=edit2.getText().toString();
+        pedido=edit3.getText().toString();
+        numeroPedidos=edit4.getText().toString();
         Mirequest post = new Mirequest(Request.Method.POST, "https://625e5cdf873d6798e2a5dce7.mockapi.io/api/vf1/Pedido", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -65,7 +68,7 @@ public class NewOrderActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
-        });
+        },nombre, telefono, pedido, numeroPedidos);
         RequestQueue cola = Volley.newRequestQueue(this);
         cola.add(post);
     }
