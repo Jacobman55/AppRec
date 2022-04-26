@@ -23,7 +23,6 @@ import java.util.List;
 
 public class OrderListActivity extends AppCompatActivity {
 
-    private JSONObject nombre;
     private JSONObject alltheData;
 
     @Override
@@ -40,9 +39,10 @@ public class OrderListActivity extends AppCompatActivity {
                         List<OrderDto> alltheData = new ArrayList<>();
                         for (int i = 0; i < response.length(); i++) {
                             try {
-                                JsonObject pedido = response.getJSONObject(i);
-                                OrderDto data = new OrderDto(nombre);
-                                alltheData.add(nombre);
+                                JSONObject pedido = response.getJSONObject(i);
+                                OrderDto data = new OrderDto(pedido);
+                                alltheData.add(data);
+                                System.out.println(alltheData.get(i));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             };
