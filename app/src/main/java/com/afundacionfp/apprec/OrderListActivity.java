@@ -1,7 +1,10 @@
 package com.afundacionfp.apprec;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -24,11 +27,16 @@ import java.util.List;
 public class OrderListActivity extends AppCompatActivity {
 
     private JSONObject alltheData;
+    private RecyclerView recyclerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
+
+        recyclerview = (RecyclerView) findViewById(R.id.lista);
+        Activity activity = this;
+
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
                 "https://625e5cdf873d6798e2a5dce7.mockapi.io/api/vf1/Pedido",
@@ -47,6 +55,9 @@ public class OrderListActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             };
                         }
+                        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(alltheData, activity);
+                        recyclerview.setAdapter(recyclerViewAdapter);
+                        recyclerview.setLayoutManager(new LinearLayoutManager(activity));
                     }
                 },
                 new Response.ErrorListener() {

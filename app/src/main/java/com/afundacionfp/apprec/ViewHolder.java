@@ -13,8 +13,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     private final TextView textView;
     private final TextView textView2;
 
-    public ViewHolder(@NonNull View iteView){
-        super(iteView);
+    public ViewHolder(@NonNull View itemView){
+        super(itemView);
         textView = (TextView) itemView.findViewById(R.id.nombre_empresa);
         textView2 = (TextView) itemView.findViewById(R.id.numero_palets);
 
@@ -22,6 +22,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public void showData(OrderDto data, Activity activity){
         textView.setText(data.getNombre());
-        textView2.setText(data.getnumeroPalets());
+        textView2.setText(" "+data.getnumeroPalets());
     }
 }
