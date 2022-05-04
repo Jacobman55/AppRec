@@ -24,4 +24,5 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         textView.setText(data.getNombre());
         textView2.setText(" "+data.getnumeroPalets());
     }
+
 }
