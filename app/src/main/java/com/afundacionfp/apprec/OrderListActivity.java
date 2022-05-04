@@ -29,6 +29,7 @@ public class OrderListActivity extends AppCompatActivity {
 
     private JSONObject alltheData;
     private RecyclerView recyclerview;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,17 @@ public class OrderListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_list);
 
         recyclerview = (RecyclerView) findViewById(R.id.lista);
+        recyclerview.addOnItemTouchListener(
+                new RecyclerItemClickListener(context, RecyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
         Activity activity = this;
 
         JsonArrayRequest request = new JsonArrayRequest(
