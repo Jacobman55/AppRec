@@ -22,7 +22,7 @@ public class OrderDto {
 
     public int getTelefono(){return telefono;}
 
-    public String getPedido(){return producto;}
+    public String getProducto(){return producto;}
 
     public int getnumeroPalets(){return numeroPalets;}
 
