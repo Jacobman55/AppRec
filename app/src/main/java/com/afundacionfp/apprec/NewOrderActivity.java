@@ -71,6 +71,7 @@ public class NewOrderActivity extends AppCompatActivity {
         },nombre, telefono, pedido, numeroPedidos);
         RequestQueue cola = Volley.newRequestQueue(this);
         cola.add(post);
+        finish();
     }
 
 
