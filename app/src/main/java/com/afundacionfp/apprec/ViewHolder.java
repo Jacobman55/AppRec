@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -31,13 +32,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = activity.getApplicationContext();
-                int duration = Toast.LENGTH_SHORT;
-                CharSequence text =" "+data.getNombre()+","+data.getTelefono()+","+data.getProducto()+","+data.getnumeroPalets();
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                Intent intent = new Intent(activity, OrderDetailActivity.class);
+                intent.putExtra("nombre",data.getNombre());
+                intent.putExtra("telefono",data.getTelefono());
+                intent.putExtra("producto",data.getProducto());
+                intent.putExtra("numeroPalets",data.getnumeroPalets());
+                activity.startActivity(intent);
             }
         });
     }
-
 }
